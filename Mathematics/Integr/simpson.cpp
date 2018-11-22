@@ -12,17 +12,17 @@ using namespace std;
        for (int i=1;i<N;i+=2)
        {
 		I1 += f(x);
-		std::cout << x << " " << I1 << "\n";
+//		std::cout << x << " " << I1 << "\n";
 		x += (h + h);
        }
 	   I1 *= 4;
-	   std::cout << "\n";
+//	   std::cout << "\n";
 	   I = 0;
 	   x = a + h+h;
 	   for (int i = 1; i < N-1; i += 2)
 	   {
 		   I += f(x);
-		   std::cout << x << " " << I << "\n";
+//		   std::cout << x << " " << I << "\n";
 		   x += (h + h);
 	   }
 	   I *= 2;
@@ -53,7 +53,7 @@ double Simpson1(double a, double b, double eps, double (*f)(double))
         };
 		if (fabs((sum1 - 2.*sum2) / sum1) <= eps) return (h*sum1) / 3. + h * (2.*sum2 - sum1) / 45.; else
 		{
-			std::cout << N << "   :" << sum1 << "  " << sum2 << "\n";
+//			std::cout << N << "   :" << sum1 << "  " << sum2 << "\n";
 			N *= 2.;
 		}
     };
@@ -62,20 +62,16 @@ double Simpson1(double a, double b, double eps, double (*f)(double))
 
 double fun(double x)
 {
-	return x / (x*x*x*x + 4);// sin(x);
+	return sin(x);
 }
 
 int main()
 {
-/* std::cout<<Simpson(0.,3.14159,fun,3)<<"\n";
- std::cout<<Simpson(0.,3.14159,fun,5)<<"\n"; 
+
  std::cout<<Simpson(0.,3.14159,fun,10)<<"\n"; 
  std::cout<<Simpson(0.,3.14159,fun,20)<<"\n"; 
  std::cout<<Simpson(0.,3.14159,fun,50)<<"\n"; 
- std::cout<<Simpson(0.,3.14159,fun,80)<<"\n"; 
- std::cout<<Simpson(0.,3.14159,fun,100)<<"\n"; 
-*/
- std::cout<<Simpson(0.,5.,fun,10)<<"\n"; 
-//  std::cout<<Simpson1(0.,3.14159, 0.001, fun);
+// std::cout<<Simpson(0.,3.14159,fun,10)<<"\n"; 
+  std::cout<<Simpson1(0.,3.14159, 0.001, fun);
  return 0;
 }
